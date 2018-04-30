@@ -62,6 +62,7 @@ namespace ImageDatabaseView
             // Image column with unformatted byte array
             if (e.ColumnIndex == 3 && e.Value is byte[])
             {
+                // First 20 bytes added by Access, they need to be removed to get a valid image.
                 var bytes = ((byte[])e.Value).Skip(20).ToArray();
 
                 // Convert byte array attachment into an actual image
